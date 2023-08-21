@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>adasdasdasdasd</h1>
+        <h1>HOLAMUNDO EXAMPLE</h1>
     </div>
 </template>
 	

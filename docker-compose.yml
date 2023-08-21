@@ -43,7 +43,16 @@ services:
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
       - huellas
-
+  node_l10v2:
+      image: node:18-alpine
+      restart: unless-stopped
+      container_name: node_l10v2
+      ports:
+          - "30201:30201"
+      working_dir: /var/www
+      tty: true
+      volumes:
+          - .:/var/www
 networks:
   huellas:
     driver: bridge

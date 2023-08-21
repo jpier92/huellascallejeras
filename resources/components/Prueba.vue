@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        hOLA MUNDO
+        HOLA MUNDO PRUEBA
     </div>
 </template>
 <script>
