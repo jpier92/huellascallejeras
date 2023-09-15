@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdoptaController;
+use App\Http\Resources\AdopcionResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Adopta;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/adopcion' , function () {
+    $animalAdopcion = new Adopta();
+    return new AdopcionResource($animalAdopcion->animalesAdopcion());
 });
+
+Route::post('/adopta', [AdoptaController::class,'store']);
+
+// Route::get('/user/{id}', function (string $id) {
+//     return new UserResource(User::findOrFail($id));
+// });

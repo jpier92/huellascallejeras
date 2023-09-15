@@ -24,33 +24,42 @@ const routes = [
     { 
       path: '/contacto',
       name:'contacto', 
-      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/AboutPage.vue')
+      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/ContactoPage.vue')
     },
-    { 
-      path: '/haz-tu-aporte',
-      name:'haz-tu-aporte', 
-      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/AboutPage.vue')
-    },
+    // { 
+    //   path: '/haz-tu-aporte',
+    //   name:'haz-tu-aporte', 
+    //   component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/AboutPage.vue')
+    // },
     { 
       path: '/adopta',
       name:'adopta', 
-      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/AboutPage.vue')
+      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/AdoptaPage.vue')
     },
     { 
       path: '/animalid/:id', 
       name: 'animal-id',
-      component: ()=> import(/* webpackChunkName:"AnimalPage"*/'../modulos/huellas/pages/AnimalPage.vue'),
+      component: ()=> import(/* webpackChunkName:"AnimalPage"*/'../modulos/huellas/pages/AdoptaAnimalPage.vue'),
       props: (route) => {
         const id = Number(route.params.id);
         return isNaN(id) ? {id:1} : {id}
       } 
     },
-    // {
-    //     path: '/adopta',
-    //     name:'adopta', 
-    //     component: ()=> import(/* webpackChunkName:"AdoptaLayouts"*/'../modulos/huellas/layouts/AdoptaLayout'), //webPAck me permite cambiar el nombre de esto modulo en red del navegador    
-        
-    // },
+    { 
+      path: '/hogar-temporal',
+      name:'hogar-temporal', 
+      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/HogarPage.vue')
+    },
+    { 
+      path: '/voluntario',
+      name:'voluntario', 
+      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/VoluntarioPage.vue')
+    },
+    { 
+      path: '/socio',
+      name:'socio', 
+      component: ()=> import(/* webpackChunkName:"AboutPage"*/'../modulos/huellas/pages/SocioPage.vue')
+    },
     { 
       path: '/:pathMatch(.*)*', 
       component: ()=> import(/* webpackChunkName:"NoPageFound"*/'../modulos/shared/pages/NoPageFound.vue')

@@ -6,12 +6,17 @@
             </div>
         </div>
         <div class="container mt-4">
-            <div class="row">
+            <div class="row py-2">
                 <h5>Colaboradores</h5>
             </div>
             <div class="row">
                     <div class="col d-flex justify-content-center align-items-center ">
-                        <img style="width: 126px;" src="/assets/huellas/img/veterinaria.png" alt="">
+                        <div class="">
+                            <img style="width: 75px;" src="/assets/huellas/img/veterinaria.png" alt="">
+                        </div>
+                        <dir class="">
+                            <img style="width: 75px;" src="/assets/huellas/img/veterinaria.png" alt="">
+                        </dir>
                     </div>
                     <div class="col">
                         <div class="d-flex justify-content-center align-items-center">
@@ -20,7 +25,7 @@
                             <div class="redes-sociales mx-2 d-flex justify-content-center align-items-center"><i class="fab fa-youtube fa-lg" style="color: #eeeeec;"></i></div>
                             <div class="redes-sociales mx-2 d-flex justify-content-center align-items-center"><i class="fab fa-twitter fa-lg" style="color: #eeeeec;"></i></div>
                         </div>
-                        <p class="texto text-center my-2"> Hecho con cariño <i aria-hidden="true" class="fas fa-heart" style="color: red;"></i></p>
+                        <p class="texto text-center my-2"> Hecho con cariño por JP <i aria-hidden="true" class="fas fa-heart" style="color: red;"></i></p>
                     </div>
             </div>
         </div>    

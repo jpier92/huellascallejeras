@@ -22,16 +22,25 @@
                     <router-link class="nav-link" :to="{name:'adopta'}" >Adopta un amigo</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name:'involucrate'}" >Involucrate</router-link>
+                    <div class="dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Involucrate
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light">
+                            <li><router-link class="nav-link" :to="{name:'hogar-temporal'}" >Hogar temporal</router-link></li> 
+                            <li><router-link class="nav-link" :to="{name:'voluntario'}" >Házte voluntario</router-link></li>
+                            <li><router-link class="nav-link" :to="{name:'socio'}" >Házte socio</router-link></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link" :to="{name:'contacto'}" >Contacto</router-link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <div class="btn-aporte">
                         <router-link class="nav-link" :to="{name:'haz-tu-aporte'}" >Haz tu aporte</router-link>
                     </div>
-                </li>
+                </li> -->
             </ul>
             </div>
         </div>

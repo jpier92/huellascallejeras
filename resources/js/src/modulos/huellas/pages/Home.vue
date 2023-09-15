@@ -34,7 +34,7 @@
                 </div>
                 <div class="col sm-1 md-3">
                     <div class="mx-2 text-center">
-                        <img class="my-2" src="/assets/huellas/img/educacion.png" alt="">
+                        <img class="my-2" src="/assets/huellas/img/gestion.png" alt="">
                         <h5>Gestión comunitaria</h5>
                         <p class="texto">Es importante que la comunidad se involucre y participe en el tema, de manera que colaboramos otorgándoles las herramientas, orientando y fortaleciendo planes de acción que quieran ejercer para contribuir al control poblacional.</p>
                     </div>
@@ -64,37 +64,17 @@
         </div>
     </section>
     <section name="quieres-ser-parte">
-        <div class="container mb-5">
+        <div class="container mb-5 mt-5">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 d-flex align-items-center">
                     <img src="/assets/huellas/img/huellasCallejeras.jpg" class="d-block w-100" alt="">
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="mt-5 pt-5">
-                        <h5 class="text-center mb-3">¿Quieres ser parte?</h5>
-                        <p>Ser voluntario es participar activamente en las actividades de la ONG, contribuyendo de manera directa en la rehabilitación, recuperación y reubicación de perros y gatos abandonados.
+                    <div class="">
+                        <h3 class="text-center mb-3">¿Quieres ser parte?</h3>
+                        <p class="text-center">Ser voluntario es participar activamente en las actividades de la ONG, contribuyendo de manera directa en la rehabilitación, recuperación y reubicación de perros y gatos abandonados.
                             Sólo pedimos que el voluntario, asuma con responsabilidad y compromiso. ¡Completa el formulario y te contactamos!</p>
-                        <div name="form" class="mt-5">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Tu nombre</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Tu correo electrónico</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Asunto</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Tu mensaje</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-info btn-lg rounded-pill"><span class="text-light">Enviar</span></button>
-                            </div>
-                        </div>
+                            <FormContacto />
                     </div>
                 </div>
             </div>
@@ -102,8 +82,13 @@
     </section>
 </template>
 <script>
+import { defineAsyncComponent } from 'vue';
+
 export default {
-    
+    components:{
+        FormContacto: defineAsyncComponent(()=> import(/* webpackChunkName:"Navbar"*/'./../../shared/components/FormContacto.vue')),
+
+    }
 }
 </script>
 <style scoped>
