@@ -3,7 +3,7 @@
         <img src="/assets/huellas/img/perro-feliz.jpg" class="img-adopta" alt="Logo huellas callejeras lumaco">
         <div class="d-flex justify-content-center">
             <div class="btn-adopta" style="position: relative; top:-65px;">
-                <a href=""><i aria-hidden="true" class="fas fa-heart"><div></div></i> <span>Adopta un amigo</span></a>
+                <router-link class="nav-link" :to="{name:'adopta'}" ><i aria-hidden="true" class="fas fa-heart"><div></div></i><span>Adopta un amigo</span></router-link>
             </div>
         </div>
     </div>

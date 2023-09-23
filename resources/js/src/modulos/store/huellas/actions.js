@@ -9,10 +9,12 @@ import {getAdopciones, adopta} from '../../huellas/helpers/adopciones';
 }
 
  export const adoptaAnimal = async({commit}, dataPersona) => {
-    let response = await adopta(dataPersona); 
-    console.log(response);  
+    let response = await adopta(dataPersona);
+    commit('isLoading', false);
     if(response.error === false){
       commit('registroAdopcion', true);
+    }else{
+      commit('registroAdopcion', false);
     }
  }
 

@@ -72,6 +72,7 @@
 import {mapState} from 'vuex';
 import calcularEdad from '../helpers/utilidades';
 import { defineAsyncComponent } from "vue";
+import {darFormatoRut, verificarRut} from '../helpers/rut';
 
 export default {
     components:{
@@ -95,27 +96,22 @@ export default {
     },
     methods:{
         mostrarModal(){
+            this.$store.commit('huellas/isLoading',true);
             $('#staticBackdrop').modal('show');
          
         },
        async hideModal(){
-            if(this.registroAdopcion){
-
-             await new Promise((resolve) => {
-                    setTimeout(() => {
-                        $('#staticBackdrop').modal('hide');
-                        resolve('este es el valor que eventualmente devolverá la promesa');
-                    }, 3000);
-                    });
-               
-            }
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    $('#staticBackdrop').modal('hide');
+                    resolve('este es el valor que eventualmente devolverá la promesa');
+                }, 5000);
+            });
         },
         adoptaAnimal(){
             this.adopta['adoptaIdAnimal'] = this.adopcionId.id_animal;
             this.$store.dispatch('huellas/adoptaAnimal',this.adopta);
-            
         },
-
         checkForm(e){
             this.errorInputs['Rut']   = !this.adopta.adoptaRut ? '* El rut es obligatorio':'';
             this.errorInputs['Nombres']   = !this.adopta.adoptaNombres ? '* El nombre es obligatorio':'';
@@ -131,8 +127,7 @@ export default {
                     this.adoptaAnimal();
                 },3000);
             }
-            e.preventDefault();
-            
+            e.preventDefault();  
         },
         scrollToTop() {
             window.scrollTo(0, 0); // Esto posicionará el scroll al inicio (arriba)
@@ -155,20 +150,29 @@ export default {
                     "Esterilización": this.adopcionId.esterelizacion === 'S' ? 'Si':'No'
                     };
         },
-        
-            
     },
     watch:{
         'registroAdopcion':async function(){
-           await this.hideModal();
-           this.scrollToTop();
-           this.$router.push('/');
+            if(this.registroAdopcion !== null){
+                await this.hideModal();
+                if(this.registroAdopcion){
+                    this.scrollToTop();
+                    this.$router.push('/');
+                }
+                this.$store.commit('huellas/registroAdopcion',null);
+            }    
+
         },
         'adopta.adoptaRut': function(){
-            if(this.adopta.adoptaRut){
-                this.errorInputs.Rut = '';
-            }else{
+            this.adopta.adoptaRut = darFormatoRut(this.adopta.adoptaRut);
+            if(this.adopta.adoptaRut === ''){
                 this.errorInputs.Rut = '* El rut es obligatorio';
+            }
+            else if(verificarRut(this.adopta.adoptaRut) === false){
+                this.errorInputs.Rut = '* El rut es incorrecto';
+            }
+            else{
+                this.errorInputs.Rut = '';
             }
         },
         'adopta.adoptaNombres': function(){

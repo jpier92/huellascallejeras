@@ -20,7 +20,10 @@ class AdoptaController extends Controller
         $this->modelAdopcion = $adopcion;
     }
     public function store(Request $request){
-
+        $respuesta = array(
+            'error'=>false,
+            'mensaje' => 'El registro se ha guardado correctamente'
+        );
         $request->validate([
             'adoptaRut' => ['required'],
             'adoptaNombres' => ['required'],
@@ -31,13 +34,21 @@ class AdoptaController extends Controller
             'adoptaEmail' => ['required'],
             'adoptaIdAnimal' => ['required']
         ]);
+        try {
+            $this->modelPersonad->insertPersona($request);
+            $this->modelAdopciones->adoptaAnimal($request);
+            $this->modelAdopcion->deshabilitarAnimal($request->adoptaIdAnimal);
+            
+            return response()->json($respuesta);
+        } catch (\Throwable $th) {
+            $respuesta['error'] = true;
+            $respuesta['mensaje'] = 'Ups! a ocurrido un error interno. '.$th->getMessage();
+            return response()->json($respuesta);
+        }
     
-        $this->modelPersona->insertPersona($request);
-        $this->modelAdopciones->adoptaAnimal($request);
-        $this->modelAdopcion->deshabilitarAnimal($request->adoptaIdAnimal);
+        
 
 
-        return response()->json(['error'=>false,'mensaje' => 'El registro se ha guardado correctamente']);
 
     }
 }

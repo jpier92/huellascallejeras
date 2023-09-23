@@ -13,3 +13,7 @@ export const isLoading = (state,val) => {
 export const registroAdopcion = (state,val) => {
     state.registroAdopcion = val;
 }
+
+export const errorRut = (state,val) => {
+    state.errorRut = val;
+}

@@ -5,7 +5,7 @@
         <div class="modal-body" style="width: 498px; height:215px">
             <div class="row">
                 <div class="col">
-                    <div v-if="registroAdopcion === false">
+                    <div v-if="isLoading === true">
                         <div class="d-flex justify-content-center">
                             <span class="loader"></span>
                         </div>
@@ -14,7 +14,7 @@
                             <h5>Estamos enviando tu informacion!</h5>
                         </div> 
                     </div>
-                    <div v-else>
+                    <div v-if="isLoading === false && registroAdopcion === true">
                         <div class="success-checkmark">
                             <div class="check-icon">
                                 <span class="icon-line line-tip"></span>
@@ -27,9 +27,21 @@
                             <h4>Gracias!</h4>
                             <h5>Te contactaremos a la brevedad!</h5>
                         </div>
-                        
-                        
-                    </div>      
+                    </div>  
+                    <div v-if="isLoading === false && registroAdopcion === false">
+                        <div class="error-banmark">
+                            <div class="ban-icon">
+                                <span class="icon-line line-long-invert"></span>
+                                <span class="icon-line line-long"></span>
+                                <div class="icon-circle"></div>
+                                <div class="icon-fix"></div>
+                            </div>
+                        </div>
+                        <div class="text-center ">
+                            <h4>Ups!!</h4>
+                            <h5>Tuvimos un incoveniente al enviar tu informacion!. Favor, vuelve a intentarlo</h5>
+                        </div>
+                    </div>    
                 </div>
             </div>
         </div>
@@ -45,11 +57,10 @@ export default {
 
     data(){
         return{
-         
         };
     },
     computed:{
-        ...mapState('huellas',['registroAdopcion']),
+        ...mapState('huellas',['registroAdopcion','isLoading']),
     }
 }
 </script>
@@ -257,6 +268,95 @@ export default {
         width: 47px;
         right: 8px;
         top: 38px;
+    }
+}
+
+/* // Error icon */
+.error-banmark {
+    width: 80px;
+    height: 115px;
+    margin: 0 auto;
+    
+    .ban-icon {
+        width: 80px;
+        height: 80px;
+        position: relative;
+        border-radius: 50%;
+        box-sizing: content-box;
+        border: 4px solid rgb(175, 76, 76);
+        
+        &::before {
+            top: 3px;
+            left: -2px;
+            width: 30px;
+            transform-origin: 100% 50%;
+            border-radius: 100px 0 0 100px;
+        }
+        
+        &::after {
+            top: 0;
+            left: 30px;
+            width: 60px;
+            transform-origin: 0 50%;
+            border-radius: 0 100px 100px 0;
+            animation: rotate-circle 4.25s ease-in;
+        }
+        
+        &::before, &::after {
+            content: '';
+            height: 100px;
+            position: absolute;
+            background: rgba(255, 255, 255, 0);
+            transform: rotate(-45deg);
+        }
+        
+        .icon-line {
+            height: 5px;
+            background-color: rgb(175, 76, 76);
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+            
+            &.line-long-invert {
+                top: 39px;
+                left: 8px;
+                width: 60px;
+                transform: rotate(45deg);
+                animation: icon-line-long 0.75s;
+            }
+            
+            &.line-long {
+                top: 39px;
+                left: 8px;
+                width: 60px;
+                transform: rotate(-45deg);
+                animation: icon-line-long 0.85s;
+            }
+        }
+        
+        .icon-circle {
+            top: -4px;
+            left: -4px;
+            z-index: 10;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            box-sizing: content-box;
+            border: 4px solid rgba(175, 76, 76, 0.5);
+        }
+        
+        .icon-fix {
+            top: 8px;
+            width: 5px;
+            left: 26px;
+            z-index: 1;
+            height: 85px;
+            position: absolute;
+            transform: rotate(-45deg);
+            background-color: rgba(255, 255, 255, 0);
+        }
     }
 }
 

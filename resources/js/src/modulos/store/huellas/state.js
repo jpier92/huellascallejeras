@@ -3,8 +3,9 @@
     export default () => ({
         adopciones : [],
         adopcionId:[],
-        registroAdopcion:false,
-        isLoading: false
+        registroAdopcion:null,
+        isLoading: false,
+        errorRut: false
     }
        
     );
