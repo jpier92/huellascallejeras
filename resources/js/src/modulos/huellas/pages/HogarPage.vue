@@ -78,7 +78,7 @@
                 <div class="px-3 py-2" style="background-color: #eeee; border-radius: 10px;">
                     <h3>¿Quieres ser un hogar temporal?</h3> 
                     <p class="my-3" >Déjanos tus datos para dar mayor información</p> 
-                    <FormContacto />
+                    <FormContacto form="Hogar" />
                 </div>
                 
             </div>

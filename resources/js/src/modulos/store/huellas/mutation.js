@@ -17,3 +17,7 @@ export const registroAdopcion = (state,val) => {
 export const errorRut = (state,val) => {
     state.errorRut = val;
 }
+
+export const borrarCacheAnimal = (state, val) => {
+    state.adopciones.splice(val,1);
+}

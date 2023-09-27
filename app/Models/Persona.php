@@ -15,11 +15,11 @@ class Persona extends Model
     public function insertPersona($request){
 
         $verificarPersona = DB::table('persona')
-                            ->where('rut',$request->adoptaRut)
+                            ->where('rut',$request->adoptaRutSinPuntos)
                             ->first();
         if(!$verificarPersona){
             DB::table('persona')->insert([
-                'rut' => $request->adoptaRut,
+                'rut' => $request->adoptaRutSinPuntos,
                 'nombre' => $request->adoptaNombres,
                 'apellidos' => $request->adoptaApellidos,
                 'direccion' => $request->adoptaDireccion,

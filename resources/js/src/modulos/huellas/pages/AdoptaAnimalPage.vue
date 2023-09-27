@@ -72,7 +72,7 @@
 import {mapState} from 'vuex';
 import calcularEdad from '../helpers/utilidades';
 import { defineAsyncComponent } from "vue";
-import {darFormatoRut, verificarRut} from '../helpers/rut';
+import {darFormatoRut, verificarRut,formatRut} from '../helpers/rut';
 
 export default {
     components:{
@@ -80,15 +80,16 @@ export default {
     },
     data(){
         return{
-            idAnimal:null,
             adopta:{
                 adoptaRut:'',
+                adoptaRutSinPuntos:'',
                 adoptaNombres:'',
                 adoptaApellidos:'',
                 adoptaDireccion:'',
                 adoptaComuna:'',
                 adoptaTelefono:'',
                 adoptaEmail:'',
+                idAnimal:null,
             },
             errorInputs:{},
             modal:false
@@ -109,7 +110,7 @@ export default {
             });
         },
         adoptaAnimal(){
-            this.adopta['adoptaIdAnimal'] = this.adopcionId.id_animal;
+            this.adopta['adoptaDatosAnimal'] = this.adopcionId;
             this.$store.dispatch('huellas/adoptaAnimal',this.adopta);
         },
         checkForm(e){
@@ -135,7 +136,7 @@ export default {
      },
     computed:{
         getAnimalIdAdopcion(){
-            this.$store.commit('huellas/getAnimalIdAdopcion',this.idAnimal);
+            this.$store.commit('huellas/getAnimalIdAdopcion',this.adopta.idAnimal);
         },
         ...mapState('huellas',['adopcionId','registroAdopcion']),
         datosAnimal(){
@@ -161,7 +162,6 @@ export default {
                 }
                 this.$store.commit('huellas/registroAdopcion',null);
             }    
-
         },
         'adopta.adoptaRut': function(){
             this.adopta.adoptaRut = darFormatoRut(this.adopta.adoptaRut);
@@ -173,6 +173,7 @@ export default {
             }
             else{
                 this.errorInputs.Rut = '';
+                this.adopta.adoptaRutSinPuntos = formatRut(this.adopta.adoptaRut, true)
             }
         },
         'adopta.adoptaNombres': function(){
@@ -221,7 +222,7 @@ export default {
 
     created(){
         const {id} = this.$route.params;
-        this.idAnimal = id;
+        this.adopta.idAnimal = id;
     },
     mounted(){}
 }

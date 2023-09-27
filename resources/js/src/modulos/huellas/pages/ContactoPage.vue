@@ -23,9 +23,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-12 col-md-7">
-            <FormContacto />
+                <FormContacto form="Contacto"/>
             </div>
         </div>
     </div>

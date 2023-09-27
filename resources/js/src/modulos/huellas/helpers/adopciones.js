@@ -13,5 +13,4 @@ export async function adopta(dataPersona){
        data = response.data;
     });
     return data;
-
 }

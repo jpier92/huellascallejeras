@@ -74,7 +74,7 @@
                         <h3 class="text-center mb-3">¿Quieres ser parte?</h3>
                         <p class="text-center">Ser voluntario es participar activamente en las actividades de la ONG, contribuyendo de manera directa en la rehabilitación, recuperación y reubicación de perros y gatos abandonados.
                             Sólo pedimos que el voluntario, asuma con responsabilidad y compromiso. ¡Completa el formulario y te contactamos!</p>
-                            <FormContacto />
+                            <FormContacto form="Voluntario"/>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,8 @@ export default {
     components:{
         FormContacto: defineAsyncComponent(()=> import(/* webpackChunkName:"Navbar"*/'./../../shared/components/FormContacto.vue')),
 
-    }
+    },
+   
 }
 </script>
 <style scoped>

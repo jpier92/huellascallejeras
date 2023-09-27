@@ -1,6 +1,6 @@
 
 
-function formatRut (value, sinPuntos) {
+export function formatRut (value, sinPuntos) {
     var rutAndDv = splitRutAndDv(value);
     var cRut = rutAndDv[0];
     var cDv = rutAndDv[1];

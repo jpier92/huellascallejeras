@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdoptaController;
+use App\Http\Controllers\EnvioEmailController;
 use App\Http\Resources\AdopcionResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,17 @@ Route::get('/adopcion' , function () {
 });
 
 Route::post('/adopta', [AdoptaController::class,'store']);
+Route::post('/envio-email', [EnvioEmailController::class,'index']);
 
 // Route::get('/user/{id}', function (string $id) {
 //     return new UserResource(User::findOrFail($id));
+// });
+
+// Route::get('email-test', function(){
+  
+//     $details['email'] = 'juanpedrormm92@gmail.com';
+  
+//     dispatch(new App\Jobs\SendEmailJob($details));
+
+//     dd('done');
 // });
